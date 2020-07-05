@@ -12,4 +12,5 @@ https://se-todolist.herokuapp.com/
 # Objectives
 - [ ] Landing Page
 - [ ] Optimize CSS
+- [ ] Deleting Todolists
 - [ ] ...
