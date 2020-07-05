@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('head'); -%>
+  <body>
+    <%- include('header'); -%> <%- include('sidebar'); -%>
+    <div class="content">
+      <div class="list-heading">
+        <h1 class="listTitle"><%= listTitle %></h1>
+      </div>
+
+      <div class="box">
+        <% todos.forEach( todo => { %>
+        <form action="~/delete" method="POST">
+          <div class="todo-item">
+            <label class="container"
+              ><%= todo.name %>
+              <input
+                class="todo-item-checkbox"
+                name="checkbox"
+                type="checkbox"
+                value="<%= todo._id %>"
+                onChange="this.form.submit()"
+              />
+              <span class="checkmark"></span>
+            </label>
+          </div>
+        </form>
+        <% }) %>
+        <form class="todo-item" action="~/" method="POST">
+          <input
+            type="text"
+            class="new-todo-input"
+            name="newTodo"
+            id="newTodo"
+            placeholder="New Todo"
+            autocomplete="off"
+          />
+          <button
+            type="submit"
+            class="add-btn"
+            value="<%= listTitle %>"
+            name="list"
+          >
+            +
+          </button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

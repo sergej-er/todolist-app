@@ -1,0 +1,30 @@
+<div id="sidebar" class="sidebar">
+  <a
+    href="javascript:void(0)"
+    class="close-btn"
+    onclick="document.getElementById('sidebar').style.width = '0';"
+    >&times;</a
+  >
+  <% lists.forEach( list => { %>
+  <a href="/todos/<%= list.name %>"><%= list.name %></a>
+  <% }) %>
+  <form id="new-list-form" onsubmit="addNewList()">
+    <input
+      type="text"
+      class="new-list-input"
+      name="new-list-title"
+      placeholder="New List"
+      autocomplete="off"
+    />
+    <input type="submit" class="new-list-btn" value="+" />
+  </form>
+</div>
+
+<script>
+  function addNewList() {
+    var action_src =
+      "/todos/" + document.getElementsByName("new-list-title")[0].value;
+    var form = document.getElementById("new-list-form");
+    form.action = action_src;
+  }
+</script>
