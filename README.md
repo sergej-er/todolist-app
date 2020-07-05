@@ -10,6 +10,6 @@ Cookie Session
 
 
 # Objectives
-[ ] Landing Page
-[ ] Optimize CSS
-[ ] ...
+[_] Landing Page
+[_] Optimize CSS
+[_] ...
