@@ -15,6 +15,7 @@ module.exports = (app) => {
     List.find({ _user: req.user.id }, async (err, foundLists) => {
       if (!err) {
         const currentList = foundLists.find((list) => list.name === listTitle);
+
         if (!currentList) {
           const list = await new List({
             name: listTitle,
@@ -41,12 +42,15 @@ module.exports = (app) => {
         name: req.body.newTodo,
       });
 
-      const listTitle = req.body.list;
+      const listTitle = req.params.listTitle;
 
-      List.findOne({ name: listTitle }, (err, foundList) => {
-        foundList.todos.push(newTodo);
-        foundList.save();
-      });
+      List.findOne(
+        { _user: req.user.id, name: listTitle },
+        (err, foundList) => {
+          foundList.todos.push(newTodo);
+          foundList.save();
+        }
+      );
       res.redirect("/todos/" + listTitle);
     });
 
